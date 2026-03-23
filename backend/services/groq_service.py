@@ -67,6 +67,11 @@ def generate_first_question(resume_text: str) -> str:
     prompt = f"""You are a senior technical interviewer.
 Based on the following resume, generate ONE thoughtful opening interview question.
 The question should test whether the candidate actually knows the skills listed on their resume.
+
+IMPORTANT: Keep the question SHORT and CONCISE — ideally 1 to 2 sentences max.
+Do NOT add long preambles, context, or multi-part sub-questions.
+Ask a single, direct, and sharp question that still has depth.
+
 Return ONLY the question text, nothing else.
 
 Resume:
@@ -105,6 +110,10 @@ Generate the NEXT interview question that:
 - Is adaptive based on their previous answers
 - Is slightly harder than the previous question
 - Explores a different area of their claimed expertise if they answered well, or digs deeper if they struggled
+
+IMPORTANT: Keep the question SHORT and CONCISE — ideally 1 to 2 sentences max.
+Do NOT add long preambles, context, or multi-part sub-questions.
+Ask a single, direct, and sharp question that still has depth.
 
 Return ONLY the question text, nothing else.
 """
