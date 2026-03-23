@@ -64,13 +64,16 @@ Document text:
 
 def generate_first_question(resume_text: str) -> str:
     """Generate the first interview question based on resume content."""
-    prompt = f"""You are a senior technical interviewer.
-Based on the following resume, generate ONE thoughtful opening interview question.
-The question should test whether the candidate actually knows the skills listed on their resume.
+    prompt = f"""You are a senior technical interviewer conducting a deep, personalized interview.
 
-IMPORTANT: Keep the question SHORT and CONCISE — ideally 1 to 2 sentences max.
-Do NOT add long preambles, context, or multi-part sub-questions.
-Ask a single, direct, and sharp question that still has depth.
+Study the candidate's resume below carefully. Identify the MOST prominent skill, technology, or project they have listed.
+Generate ONE opening interview question that is SPECIFIC to something on their resume — reference the exact technology, project name, or experience they mentioned.
+
+Rules:
+- The question MUST reference a specific item from their resume (e.g., a project name, a technology, a role).
+- Do NOT ask generic questions like "Tell me about yourself" or "What is REST API?".
+- Keep it to 1-2 sentences max. Be direct and sharp.
+- The question should test real understanding, not just definitions.
 
 Return ONLY the question text, nothing else.
 
@@ -94,28 +97,34 @@ def generate_next_question(
     for i, (q, a) in enumerate(zip(previous_questions, previous_answers), 1):
         prev_qa += f"\nQ{i}: {q}\nA{i}: {a}\n"
 
-    prompt = f"""You are a senior technical interviewer.
+    prompt = f"""You are a senior technical interviewer conducting a deep, personalized interview.
 
-The candidate's resume lists these skills and experience:
+Candidate's resume:
 {resume_text}
 
-Previous Questions and Answers:
+Interview history so far:
 {prev_qa if prev_qa else "None"}
 
 Latest Question: {current_question}
 Latest Answer: {current_answer}
 
-Generate the NEXT interview question that:
-- Tests whether the candidate truly knows the skills on their resume
-- Is adaptive based on their previous answers
-- Is slightly harder than the previous question
-- Explores a different area of their claimed expertise if they answered well, or digs deeper if they struggled
+Before generating the next question, ANALYZE the latest answer:
+1. Did the candidate demonstrate real understanding or just surface-level/textbook knowledge?
+2. Were there any factual errors, vague claims, or gaps in their answer?
+3. Did they miss any important concepts that a knowledgeable person would mention?
 
-IMPORTANT: Keep the question SHORT and CONCISE — ideally 1 to 2 sentences max.
-Do NOT add long preambles, context, or multi-part sub-questions.
-Ask a single, direct, and sharp question that still has depth.
+Based on your analysis:
+- If the answer was WEAK or VAGUE: ask a pointed follow-up that exposes the specific gap or forces them to go deeper on the same topic.
+- If the answer was WRONG: challenge them on the specific mistake with a question that tests the correct concept.
+- If the answer was STRONG: move to a DIFFERENT skill/project from their resume and ask something specific about it.
+- NEVER repeat a topic that was already covered well.
 
-Return ONLY the question text, nothing else.
+Rules:
+- Reference specific technologies, projects, or claims from their resume.
+- Keep it to 1-2 sentences max. Be direct and sharp.
+- Do NOT ask generic textbook questions. Make every question feel like it was written specifically for THIS candidate.
+
+Return ONLY the next question text, nothing else.
 """
     return _ask(prompt)
 
