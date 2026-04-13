@@ -30,8 +30,26 @@ export default function App() {
     <div className="app">
       <header className="app-header">
         <span className="logo">
-          <svg className="logo-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M12 2L14.09 8.26L20 9.27L15.55 13.97L16.91 20L12 16.9L7.09 20L8.45 13.97L4 9.27L9.91 8.26L12 2Z" fill="var(--primary)"/>
+          <svg className="logo-icon" width="28" height="28" viewBox="0 0 64 64" style={{ borderRadius: '50%', background: '#fff', boxShadow: '0 2px 6px rgba(0,0,0,0.08)' }}>
+            <circle cx="32" cy="32" r="32" fill="#ffffff" />
+            <svg x="10" y="10" width="44" height="44" viewBox="6 4 52 52">
+              <line x1="32" y1="18" x2="32" y2="8" stroke="#003d29" strokeWidth="4" strokeLinecap="round"/>
+              <circle cx="32" cy="8" r="4" fill="#d4af37"/>
+              <rect x="12" y="18" width="40" height="38" rx="8" fill="#006241"/>
+              <rect x="12" y="44" width="40" height="12" rx="4" fill="#004d33"/>
+              <rect x="6" y="30" width="6" height="14" rx="2" fill="#003d29"/>
+              <rect x="52" y="30" width="6" height="14" rx="2" fill="#003d29"/>
+              <circle cx="24" cy="32" r="9" fill="#ffffff"/>
+              <circle cx="25" cy="35" r="3.5" fill="#1e3932"/>
+              <circle cx="26" cy="36" r="1" fill="#ffffff"/>
+              <circle cx="40" cy="32" r="9" fill="#ffffff"/>
+              <circle cx="42" cy="29" r="4" fill="#1e3932"/>
+              <circle cx="42.5" cy="28.5" r="1" fill="#ffffff"/>
+              <line x1="24" y1="50" x2="40" y2="50" stroke="#edebe4" strokeWidth="2.5" strokeLinecap="round"/>
+              <line x1="28" y1="48" x2="28" y2="52" stroke="#edebe4" strokeWidth="2" strokeLinecap="round"/>
+              <line x1="32" y1="48" x2="32" y2="52" stroke="#edebe4" strokeWidth="2" strokeLinecap="round"/>
+              <line x1="36" y1="48" x2="36" y2="52" stroke="#edebe4" strokeWidth="2" strokeLinecap="round"/>
+            </svg>
           </svg>
           <span className="logo-text">InterviewAI</span>
         </span>
