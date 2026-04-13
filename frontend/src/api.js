@@ -2,7 +2,7 @@
 // In local dev (Vite on :5173), point to the backend directly.
 const API_BASE = window.location.port === '5173'
     ? 'http://localhost:8000'
-    : '';
+    : 'https://ai-interview-agent-bot.onrender.com';
 
 export async function uploadResume(file) {
     const formData = new FormData();
