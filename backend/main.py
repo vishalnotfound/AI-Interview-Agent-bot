@@ -1,4 +1,6 @@
 import uuid
+import logging
+import os
 from fastapi import FastAPI, UploadFile, File, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -11,16 +13,46 @@ from services.groq_service import (
     generate_final_report,
 )
 
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
+)
+logger = logging.getLogger("api")
+
 app = FastAPI(title="AI Interview Prep API")
 
-# CORS — allow the Vite dev server 
+# Productive CORS — configurable via env var
+allowed_origins_raw = os.getenv("ALLOWED_ORIGINS", "http://localhost:5173,http://localhost,http://127.0.0.1:5173")
+allowed_origins = [origin.strip() for origin in allowed_origins_raw.split(",")]
+
+# app.add_middleware(
+#     CORSMiddleware,
+#     allow_origins=allowed_origins,
+#     allow_credentials=True,
+#     allow_methods=["*"],
+#     allow_headers=["*"],
+# )
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://127.0.0.1:5173", "http://localhost"],
-    allow_credentials=True,
+    allow_origins=["*"],
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+@app.on_event("startup")
+async def startup_event():
+    """Validate environment on startup."""
+    if not os.getenv("GROQ_API_KEY"):
+        logger.error("GROQ_API_KEY environment variable is not set!")
+    else:
+        logger.info("GROQ_API_KEY is configured.")
+
+@app.get("/health")
+async def health_check():
+    """Simple health check endpoint for monitoring."""
+    return {"status": "healthy"}
 
 # In-memory session     
 sessions: dict = {}
@@ -68,6 +100,7 @@ async def upload_resume(file: UploadFile = File(...)):
         "answers": [],
     }
 
+    logger.info(f"New session created: {session_id}")
     return {"session_id": session_id, "first_question": first_question}
 
 
