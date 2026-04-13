@@ -2,14 +2,14 @@ export default function FinalReport({ report }) {
   if (!report) return null;
 
   const scoreColor =
-    report.overall_score >= 75 ? '#00C9A7' :
-    report.overall_score >= 50 ? '#FFC75F' : '#FF6B6B';
+    report.overall_score >= 75 ? 'var(--success)' :
+    report.overall_score >= 50 ? 'var(--warning)' : 'var(--danger)';
 
   const recColor = {
-    'Strongly Recommend': '#00C9A7',
-    'Recommend': '#6C63FF',
-    'Consider': '#FFC75F',
-    'Do Not Recommend': '#FF6B6B',
+    'Strongly Recommend': 'var(--success)',
+    'Recommend': 'var(--primary)',
+    'Consider': 'var(--warning)',
+    'Do Not Recommend': 'var(--danger)',
   };
 
   return (
@@ -37,7 +37,7 @@ export default function FinalReport({ report }) {
 
       <div
         className="recommendation-badge"
-        style={{ backgroundColor: recColor[report.hire_recommendation] || '#6C63FF' }}
+        style={{ backgroundColor: recColor[report.hire_recommendation] || 'var(--primary)' }}
       >
         {report.hire_recommendation}
       </div>

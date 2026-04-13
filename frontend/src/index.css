@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
 
 /* ========================================
    RESET & BASE
@@ -12,20 +12,20 @@
 }
 
 :root {
-  --bg: #101014;
-  --surface: #1b1b22;
-  --surface-2: #242430;
-  --border: #32323e;
-  --text: #e2e2ea;
-  --text-muted: #8e8ea0;
-  --primary: #7B8CDE;
-  --primary-glow: rgba(123, 140, 222, 0.2);
-  --success: #5EC4A8;
-  --danger: #E8706F;
-  --warning: #E8B75A;
+  --bg: #f2f0eb;
+  --surface: #ffffff;
+  --surface-2: #edebe4;
+  --border: #dcd7c9;
+  --text: #1e3932;
+  --text-muted: #4a5d55;
+  --primary: #006241;
+  --primary-glow: rgba(0, 98, 65, 0.2);
+  --success: #00a862;
+  --danger: #cf2a27;
+  --warning: #d4a373;
   --radius: 16px;
   --radius-sm: 10px;
-  --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 html {

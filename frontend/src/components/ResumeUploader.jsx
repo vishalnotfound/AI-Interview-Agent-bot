@@ -82,29 +82,20 @@ export default function ResumeUploader({ onUploadSuccess }) {
       </div>
 
       <div className="upload-card">
-        {/* Hero Icon */}
-        <div className="hero-icon-wrap">
-          <div className={`hero-ring ${loading ? 'processing' : parsed ? 'done' : ''}`}></div>
-          <svg className="hero-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="8" y="6" width="48" height="52" rx="6" stroke="url(#grad1)" strokeWidth="2.5" fill="none"/>
-            <path d="M20 22h24M20 30h24M20 38h16" stroke="url(#grad1)" strokeWidth="2" strokeLinecap="round"/>
-            <circle cx="48" cy="48" r="14" fill="var(--bg)" stroke="url(#grad2)" strokeWidth="2.5"/>
-            <path d="M44 48l3 3 6-6" stroke="var(--success)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-            <defs>
-              <linearGradient id="grad1" x1="8" y1="6" x2="56" y2="58">
-                <stop stopColor="var(--primary)"/>
-                <stop offset="1" stopColor="var(--success)"/>
-              </linearGradient>
-              <linearGradient id="grad2" x1="34" y1="34" x2="62" y2="62">
-                <stop stopColor="var(--primary)"/>
-                <stop offset="1" stopColor="var(--success)"/>
-              </linearGradient>
-            </defs>
-          </svg>
-        </div>
+        <div className="upload-card-left">
+          {/* Hero Icon */}
+          <div className="hero-icon-wrap">
+            <div className={`hero-ring ${loading ? 'processing' : parsed ? 'done' : ''}`}></div>
+            <svg className="hero-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="8" y="6" width="48" height="52" rx="6" stroke="var(--primary)" strokeWidth="2.5" fill="none"/>
+              <path d="M20 22h24M20 30h24M20 38h16" stroke="var(--primary)" strokeWidth="2" strokeLinecap="round"/>
+              <circle cx="48" cy="48" r="14" fill="var(--bg)" stroke="var(--success)" strokeWidth="2.5"/>
+              <path d="M44 48l3 3 6-6" stroke="var(--success)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </div>
 
         {/* Title & Subtitle */}
-        <h1 className="hero-title">AI Interview Prep</h1>
+        <h1 className="hero-title">InterviewAI</h1>
         <p className="hero-subtitle">Upload your resume and ace your next interview with AI-powered mock sessions</p>
 
         {/* Feature Pills */}
@@ -122,7 +113,9 @@ export default function ResumeUploader({ onUploadSuccess }) {
             <span>Smart Feedback</span>
           </span>
         </div>
+        </div>
 
+        <div className="upload-card-right">
         {/* Drop Zone */}
         <div
           className={`drop-zone ${dragActive ? 'drag-active' : ''} ${file ? 'has-file' : ''}`}
@@ -214,6 +207,7 @@ export default function ResumeUploader({ onUploadSuccess }) {
             <div className="step-dot">3</div>
             <span className="step-label">Report</span>
           </div>
+        </div>
         </div>
       </div>
     </div>
