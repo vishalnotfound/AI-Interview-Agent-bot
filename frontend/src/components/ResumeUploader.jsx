@@ -210,6 +210,9 @@ export default function ResumeUploader({ onUploadSuccess }) {
         </div>
         </div>
       </div>
+      <p style={{ textAlign: 'center', color: 'var(--text-muted)', marginTop: '1.5rem', fontSize: '0.9rem', maxWidth: '600px', margin: '1.5rem auto 0' }}>
+        * Note for first-time users: Interview could take up to 30 seconds to start.
+      </p>
     </div>
   );
 }
